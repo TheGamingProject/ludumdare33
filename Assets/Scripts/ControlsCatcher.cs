@@ -11,18 +11,18 @@ public class ControlsCatcher : MonoBehaviour
 	void Update () {
 		float direction = 0;
 
-		if (Input.GetKey ("a")) {
-			direction = -1;
+		if (Input.GetKeyDown ("a")) {
+			playerMonster.GetComponent<Controls>().holdLeft();
+		}
+		if (Input.GetKeyUp ("a")) {
+			playerMonster.GetComponent<Controls>().releaseLeft();
 		}
 
-		if (Input.GetKey ("d")) {
-			direction = 1;
+		if (Input.GetKeyDown ("d")) {
+			playerMonster.GetComponent<Controls>().holdRight();
 		}
-
-		if (direction != 0) {
-			playerMonster.GetComponent<Controls> ().hitDirection (direction);
-		} else if (direction == 0 && lastDirection != direction) {
-			playerMonster.GetComponent<Controls>().release();
+		if (Input.GetKeyUp ("d")) {
+			playerMonster.GetComponent<Controls>().releaseRight();
 		}
 
 		lastDirection = direction;
