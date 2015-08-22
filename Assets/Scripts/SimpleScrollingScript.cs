@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 public class SimpleScrollingScript : MonoBehaviour {
-	public float removalY = 10;
+	public float removalY = -50;
 	
 	public void Update () {
 		var speed = transform.parent.GetComponent<LevelSpeed>().Speed;

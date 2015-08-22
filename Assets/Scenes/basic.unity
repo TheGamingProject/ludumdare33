@@ -794,7 +794,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098095dcff54ae9488f724e1a0192b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawneePrefab: {fileID: 498380, guid: 18e6de885836e3240a9c961f7869eb11, type: 2}
+  spawneePrefab1: {fileID: 490520, guid: 091ad67662b3d6d4cae168aa9ede5be8, type: 2}
+  spawneePrefab2: {fileID: 413944, guid: bb95d18ed9b262d439526ef5de89cea6, type: 2}
+  spawneePrefab3: {fileID: 498380, guid: 18e6de885836e3240a9c961f7869eb11, type: 2}
+  spawneePrefab4: {fileID: 498352, guid: 5d60a00df3f570049be280499ec2704c, type: 2}
   scaleWithLevelSpeed: 0
   initialSpawnTime: 1.5
   spawnXRange: 2.04999995

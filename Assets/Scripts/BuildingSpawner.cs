@@ -2,7 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class BuildingSpawner : MonoBehaviour {
-	public Transform spawneePrefab;
+	public Transform spawneePrefab1;
+	public Transform spawneePrefab2;
+	public Transform spawneePrefab3;
+	public Transform spawneePrefab4;
 	
 	public bool scaleWithLevelSpeed = false;
 	
@@ -39,7 +42,26 @@ public class BuildingSpawner : MonoBehaviour {
 	
 	private void spawn (bool isLeft) {
 		float x = (isLeft ? -1 : 1) * spawnXRange;
-		Transform t = TransformFactory.make2dTransform(spawneePrefab, new Vector2(x, spawnY), transform);
+
+		Transform buildingPrefab = null;
+		int whichBuilding = Random.Range (0, 3);
+		switch (whichBuilding) {
+		case 0:
+			buildingPrefab = spawneePrefab1;
+			break;
+		case 1:
+			buildingPrefab = spawneePrefab2;
+			break;
+		case 2:
+			buildingPrefab = spawneePrefab3;
+			break;
+		case 3:
+			buildingPrefab = spawneePrefab4;
+			break;
+		}
+
+
+		Transform t = TransformFactory.make2dTransform(buildingPrefab, new Vector2(x, spawnY), transform);
 
 		if (!isLeft) {
 			t.Rotate(new Vector3(0,180,0));
