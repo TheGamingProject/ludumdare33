@@ -37,5 +37,9 @@ public class Cooldown{
 
 		return (startTime + cooldownAmount) - Time.timeSinceLevelLoad;
 	}
+
+	public void addTime (float amount) {
+		startTime += amount;
+	}
 }
 

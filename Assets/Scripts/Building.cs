@@ -7,5 +7,6 @@ public class Building : MonoBehaviour
 
 	public void die () {
 		GetComponent<Animator> ().SetBool ("isDead", true);
+		GameObject.Find ("Score").GetComponent<Score> ().givePoints (1);
 	}
 }

@@ -4,10 +4,6 @@ using Random = UnityEngine.Random;
 
 public class Controls : MonoBehaviour
 {
-	public Sprite idleSprite;
-	public Sprite leftSprite;
-	public Sprite rightSprite;
-
 	int direction = 0;
 	SpriteRenderer mySprite;
 
@@ -18,6 +14,9 @@ public class Controls : MonoBehaviour
 	Cooldown gotoLeftCooldown;
 	Cooldown gotoRightCooldown;
 
+	public float swingCooldownAmount = .150f;
+	Cooldown swingCooldown;
+
 	void Start()
 	{
 		mySprite = transform.GetComponent<SpriteRenderer> ();
@@ -27,6 +26,7 @@ public class Controls : MonoBehaviour
 
 		gotoLeftCooldown = new Cooldown (switchSidesCooldownAmount);
 		gotoRightCooldown = new Cooldown (switchSidesCooldownAmount);
+		swingCooldown = new Cooldown (swingCooldownAmount);
 
 		gotoIdle ();
 	}
@@ -36,14 +36,19 @@ public class Controls : MonoBehaviour
 	{
 		if (gotoLeftCooldown.didCooldownExpire()) {
 			gotoLeft();
+			GetComponent<Animator> ().Play ("monster_attack_left");
 			gotoLeftCooldown.stopCooldown();
 		}
 		if (gotoRightCooldown.didCooldownExpire()) {
 			gotoRight();
+			GetComponent<Animator> ().Play ("monster_attack_right");
 			gotoRightCooldown.stopCooldown();
 		}
 
-
+		if (swingCooldown.didCooldownExpire ()) {
+			gotoIdle();
+			swingCooldown.stopCooldown();
+		}
 	}
 	
 	public void pressLeft () {
@@ -53,7 +58,7 @@ public class Controls : MonoBehaviour
 	}
 
 	public void releaseLeft () {
-		gotoIdle();
+		//gotoIdle();
 	}
 
 	public void pressRight () {
@@ -63,26 +68,25 @@ public class Controls : MonoBehaviour
 	}
 	
 	public void releaseRight () {
-		gotoIdle();
+		//gotoIdle();
 	}
 
 	void gotoIdle () {
-		mySprite.sprite = idleSprite;
 		leftArm.GetComponent<BoxCollider2D>().enabled = false;
 		rightArm.GetComponent<BoxCollider2D>().enabled = false;
 		direction = 0;
 	}
 
 	void gotoLeft () {
-		mySprite.sprite = leftSprite;
 		leftArm.GetComponent<BoxCollider2D>().enabled = true;
 		direction = -1;
+		swingCooldown.startCooldown();
 	}
 
 	void gotoRight () {
-		mySprite.sprite = rightSprite;
 		rightArm.GetComponent<BoxCollider2D>().enabled = true;
 		direction = 1;
+		swingCooldown.startCooldown();
 	}
 
 	public void hitLeftArm(Collider2D collider) {
