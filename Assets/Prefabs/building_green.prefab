@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 413944}
   - 212: {fileID: 21247090}
   - 95: {fileID: 9545062}
-  - 114: {fileID: 11486104}
   - 114: {fileID: 11435612}
   - 61: {fileID: 6199234}
+  - 114: {fileID: 11409060}
   m_Layer: 0
   m_Name: building_green
   m_TagString: Untagged
@@ -62,6 +62,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11409060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f54371ea4d71743926b4a454a9e7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathPoints: 5
+  color: 1
 --- !u!114 &11435612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,17 +87,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   removalY: -50
---- !u!114 &11486104
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0277f9620e164c47ae40ece2166dc4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &21247090
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -133,6 +135,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathPoints
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

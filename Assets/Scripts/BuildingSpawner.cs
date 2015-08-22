@@ -33,13 +33,13 @@ public class BuildingSpawner : MonoBehaviour {
 	void Update () {
 		if (spawnLeftCooldown.didCooldownExpire()) {
 			float extraSpawnTime = spawn (true);
-			Debug.Log ("spawning left");
+			//.Log ("spawning left");
 			spawnLeftCooldown.setCooldownAmount (RandomN.getRandomFloatByRange (spawnRate) + extraSpawnTime);
 			spawnLeftCooldown.startCooldown ();
 		}
 		if (spawnRightCooldown.didCooldownExpire()) {
 			float extraSpawnTime = spawn (false);
-			Debug.Log ("spawning right");
+			//Debug.Log ("spawning right");
 			spawnRightCooldown.setCooldownAmount (RandomN.getRandomFloatByRange (spawnRate) + extraSpawnTime);
 			spawnRightCooldown.startCooldown ();
 		}

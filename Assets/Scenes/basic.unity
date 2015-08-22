@@ -310,6 +310,8 @@ MonoBehaviour:
   orangeIndicator: {fileID: 21300000, guid: ddd6d194b4961f54cb0a2e0832d38838, type: 3}
   orangeIndicatorChecked: {fileID: 21300000, guid: 3163e7fc559f42742b80ad10731842a1,
     type: 3}
+  baseSpeed: -4
+  perMultiplierSpeed: -.5
 --- !u!224 &515480365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -460,7 +462,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 1, y: 130}
+  m_AnchoredPosition: {x: 59.5999985, y: 130}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &677170902
@@ -914,7 +916,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -56, y: 130}
+  m_AnchoredPosition: {x: -59.2999992, y: 130}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1212403507
@@ -975,7 +977,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 61, y: 130}
+  m_AnchoredPosition: {x: -.300000012, y: 130}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1347709687
@@ -1290,7 +1292,7 @@ MonoBehaviour:
   initialSpawnTime: 1.5
   spawnXRange: 2.04999995
   spawnY: -30
-  spawnRate: {x: 1, y: 2.5}
+  spawnRate: {x: .75, y: 2}
 --- !u!1 &2054054513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1324,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 125, y: 128}
+  m_AnchoredPosition: {x: 120, y: 130}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2054054515
@@ -1383,7 +1385,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -111, y: 128}
+  m_AnchoredPosition: {x: -118.5, y: 130}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2125510315

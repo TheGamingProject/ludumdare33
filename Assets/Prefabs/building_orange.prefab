@@ -11,8 +11,8 @@ GameObject:
   - 212: {fileID: 21293288}
   - 114: {fileID: 11497278}
   - 61: {fileID: 6176830}
-  - 114: {fileID: 11494752}
   - 95: {fileID: 9537602}
+  - 114: {fileID: 11464016}
   m_Layer: 0
   m_Name: building_orange
   m_TagString: Untagged
@@ -62,7 +62,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11494752
+--- !u!114 &11464016
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -70,9 +70,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 117666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0277f9620e164c47ae40ece2166dc4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 03f54371ea4d71743926b4a454a9e7a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPoints: 5
+  color: 3
 --- !u!114 &11497278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,6 +143,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathPoints
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

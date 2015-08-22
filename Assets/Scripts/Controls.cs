@@ -4,8 +4,8 @@ using Random = UnityEngine.Random;
 
 public class Controls : MonoBehaviour
 {
-	int direction = 0;
-	SpriteRenderer mySprite;
+	//int direction = 0;
+	//SpriteRenderer mySprite;
 
 	Transform leftArm;
 	Transform rightArm;
@@ -19,7 +19,7 @@ public class Controls : MonoBehaviour
 
 	void Start()
 	{
-		mySprite = transform.GetComponent<SpriteRenderer> ();
+		//mySprite = transform.GetComponent<SpriteRenderer> ();
 
 		leftArm = transform.GetChild (0);
 		rightArm = transform.GetChild (1);
@@ -74,32 +74,37 @@ public class Controls : MonoBehaviour
 	void gotoIdle () {
 		leftArm.GetComponent<BoxCollider2D>().enabled = false;
 		rightArm.GetComponent<BoxCollider2D>().enabled = false;
-		direction = 0;
+	//	direction = 0;
 	}
 
 	void gotoLeft () {
 		leftArm.GetComponent<BoxCollider2D>().enabled = true;
-		direction = -1;
+	//	direction = -1;
 		swingCooldown.startCooldown();
 	}
 
 	void gotoRight () {
 		rightArm.GetComponent<BoxCollider2D>().enabled = true;
-		direction = 1;
+	//	direction = 1;
 		swingCooldown.startCooldown();
 	}
 
 	public void hitLeftArm(Collider2D collider) {
-		Debug.Log (collider.name);
-		if (collider.GetComponent<Building>() != null) {
-			collider.GetComponent<Building>().die();
-		}
+		normalHitCollider (collider);
 	}
 
 	public void hitRightArm(Collider2D collider) {
-		Debug.Log (collider.name);
+		normalHitCollider (collider);
+	}
+
+	void normalHitCollider (Collider2D collider) {
+		//	Debug.Log (collider.name);
 		if (collider.GetComponent<Building>() != null) {
-			collider.GetComponent<Building>().die();
+			if (collider.GetComponent<Building>() is ColoredBuilding) {
+				collider.GetComponent<ColoredBuilding>().die ();
+			} else {
+				collider.GetComponent<Building>().die();
+			}
 		}
 	}
 }

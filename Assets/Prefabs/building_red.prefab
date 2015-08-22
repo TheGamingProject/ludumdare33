@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 498352}
   - 212: {fileID: 21276180}
   - 95: {fileID: 9553530}
-  - 114: {fileID: 11468430}
   - 114: {fileID: 11493054}
   - 61: {fileID: 6112592}
+  - 114: {fileID: 11403866}
   m_Layer: 0
   m_Name: building_red
   m_TagString: Untagged
@@ -62,7 +62,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11468430
+--- !u!114 &11403866
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -70,9 +70,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 142666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0277f9620e164c47ae40ece2166dc4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 03f54371ea4d71743926b4a454a9e7a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPoints: 5
+  color: 0
 --- !u!114 &11493054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,6 +139,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathPoints
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
