@@ -8,11 +8,15 @@ public class Controls : MonoBehaviour
 	public Sprite leftSprite;
 	public Sprite rightSprite;
 
-	float direction = 0;
+	int direction = 0;
 	SpriteRenderer mySprite;
 
 	Transform leftArm;
 	Transform rightArm;
+	
+	public float switchSidesCooldownAmount = .150f;
+	Cooldown gotoLeftCooldown;
+	Cooldown gotoRightCooldown;
 
 	void Start()
 	{
@@ -21,28 +25,29 @@ public class Controls : MonoBehaviour
 		leftArm = transform.GetChild (0);
 		rightArm = transform.GetChild (1);
 
+		gotoLeftCooldown = new Cooldown (switchSidesCooldownAmount);
+		gotoRightCooldown = new Cooldown (switchSidesCooldownAmount);
+
 		gotoIdle ();
 	}
 
-	float gotoLeftCooldown = -1,
-	gotoRightCooldown = -1;
 		
 	void Update()
 	{
-		if (gotoLeftCooldown > 0 && gotoLeftCooldown < Time.timeSinceLevelLoad) {
+		if (gotoLeftCooldown.didCooldownExpire()) {
 			gotoLeft();
-			gotoLeftCooldown = -1;
+			gotoLeftCooldown.stopCooldown();
 		}
-		if (gotoRightCooldown > 0 && gotoRightCooldown < Time.timeSinceLevelLoad) {
+		if (gotoRightCooldown.didCooldownExpire()) {
 			gotoRight();
-			gotoRightCooldown = -1;
+			gotoRightCooldown.stopCooldown();
 		}
 	}
-	public float switchCooldownAmount = .150f;
+	
 	public void holdLeft () {
-		gotoLeftCooldown = Time.timeSinceLevelLoad + switchCooldownAmount;
+		gotoLeftCooldown.startCooldown ();
 		gotoIdle();
-		gotoRightCooldown = -1;
+		gotoRightCooldown.stopCooldown ();
 	}
 
 	public void releaseLeft () {
@@ -50,9 +55,9 @@ public class Controls : MonoBehaviour
 	}
 
 	public void holdRight () {
-		gotoRightCooldown = Time.timeSinceLevelLoad + switchCooldownAmount;
+		gotoRightCooldown.startCooldown();
 		gotoIdle();
-		gotoLeftCooldown = -1;
+		gotoLeftCooldown.stopCooldown();
 	}
 	
 	public void releaseRight () {
@@ -63,16 +68,19 @@ public class Controls : MonoBehaviour
 		mySprite.sprite = idleSprite;
 		leftArm.GetComponent<BoxCollider2D>().enabled = false;
 		rightArm.GetComponent<BoxCollider2D>().enabled = false;
+		direction = 0;
 	}
 
 	void gotoLeft () {
 		mySprite.sprite = leftSprite;
 		leftArm.GetComponent<BoxCollider2D>().enabled = true;
+		direction = -1;
 	}
 
 	void gotoRight () {
 		mySprite.sprite = rightSprite;
 		rightArm.GetComponent<BoxCollider2D>().enabled = true;
+		direction = 1;
 	}
 
 	public void hitLeftArm(Collider2D collider) {
