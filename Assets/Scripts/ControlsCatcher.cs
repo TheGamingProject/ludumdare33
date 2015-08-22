@@ -12,14 +12,14 @@ public class ControlsCatcher : MonoBehaviour
 		float direction = 0;
 
 		if (Input.GetKeyDown ("a")) {
-			playerMonster.GetComponent<Controls>().holdLeft();
+			playerMonster.GetComponent<Controls>().pressLeft();
 		}
 		if (Input.GetKeyUp ("a")) {
 			playerMonster.GetComponent<Controls>().releaseLeft();
 		}
 
 		if (Input.GetKeyDown ("d")) {
-			playerMonster.GetComponent<Controls>().holdRight();
+			playerMonster.GetComponent<Controls>().pressRight();
 		}
 		if (Input.GetKeyUp ("d")) {
 			playerMonster.GetComponent<Controls>().releaseRight();

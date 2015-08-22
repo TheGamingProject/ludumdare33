@@ -42,9 +42,11 @@ public class Controls : MonoBehaviour
 			gotoRight();
 			gotoRightCooldown.stopCooldown();
 		}
+
+
 	}
 	
-	public void holdLeft () {
+	public void pressLeft () {
 		gotoLeftCooldown.startCooldown ();
 		gotoIdle();
 		gotoRightCooldown.stopCooldown ();
@@ -54,7 +56,7 @@ public class Controls : MonoBehaviour
 		gotoIdle();
 	}
 
-	public void holdRight () {
+	public void pressRight () {
 		gotoRightCooldown.startCooldown();
 		gotoIdle();
 		gotoLeftCooldown.stopCooldown();

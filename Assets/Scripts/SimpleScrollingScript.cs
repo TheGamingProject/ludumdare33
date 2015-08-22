@@ -12,7 +12,7 @@ public class SimpleScrollingScript : MonoBehaviour {
 		transform.Translate(movement);
 		
 		foreach(Transform t in transform) {
-			if (transform.position.y + t.localPosition.y >= removalY) {
+			if (transform.position.y + t.localPosition.y <= removalY) {
 				Destroy(t.gameObject);
 			}
 		}
