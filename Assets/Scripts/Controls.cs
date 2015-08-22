@@ -87,11 +87,15 @@ public class Controls : MonoBehaviour
 
 	public void hitLeftArm(Collider2D collider) {
 		Debug.Log (collider.name);
-		Destroy (collider.gameObject);
+		if (collider.GetComponent<Building>() != null) {
+			collider.GetComponent<Building>().die();
+		}
 	}
 
 	public void hitRightArm(Collider2D collider) {
 		Debug.Log (collider.name);
-		Destroy (collider.gameObject);
+		if (collider.GetComponent<Building>() != null) {
+			collider.GetComponent<Building>().die();
+		}
 	}
 }
