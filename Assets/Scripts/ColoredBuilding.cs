@@ -32,7 +32,7 @@ public class ColoredBuilding : Building
 			spawnY2 = transform.position.y - purplePeopleOffset.y;
 		}
 		
-		Transform t = TransformFactory.make2dTransform(prefab, new Vector2(spawnX, spawnY), transform);
+		TransformFactory.make2dTransform(prefab, new Vector2(spawnX, spawnY), transform);
 		Transform t2 = TransformFactory.make2dTransform(prefab, new Vector2(spawnX2, spawnY2), transform);
 		t2.position = new Vector3 (t2.position.x, t2.position.y, t2.position.z - .1f);
 		t2.Rotate (new Vector3 (0, 180, 180));

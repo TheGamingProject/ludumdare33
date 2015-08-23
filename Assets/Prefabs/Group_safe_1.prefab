@@ -228,6 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0277f9620e164c47ae40ece2166dc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPoints: 1
+  deathSeconds: .25
+  popupTextPrefab: {fileID: 487732, guid: 1dcd726deefa4cd4d8b1c5fb66818f43, type: 2}
 --- !u!114 &11427994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,6 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0277f9620e164c47ae40ece2166dc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPoints: 1
+  deathSeconds: .25
+  popupTextPrefab: {fileID: 487732, guid: 1dcd726deefa4cd4d8b1c5fb66818f43, type: 2}
 --- !u!114 &11430414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,6 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0277f9620e164c47ae40ece2166dc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPoints: 1
+  deathSeconds: .25
+  popupTextPrefab: {fileID: 487732, guid: 1dcd726deefa4cd4d8b1c5fb66818f43, type: 2}
 --- !u!114 &11469858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,6 +400,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: popupTextPrefab
+      value: 
+      objectReference: {fileID: 487732, guid: 1dcd726deefa4cd4d8b1c5fb66818f43, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 132636}

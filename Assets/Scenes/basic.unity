@@ -1000,7 +1000,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: faf495f556fc0bc438ac80db8b4dc6c8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1455,6 +1455,7 @@ GameObject:
   - 114: {fileID: 1868516163}
   - 114: {fileID: 1868516164}
   - 114: {fileID: 1868516165}
+  - 114: {fileID: 1868516166}
   m_Layer: 0
   m_Name: 2 - Game Object Foreground
   m_TagString: Untagged
@@ -1511,6 +1512,7 @@ MonoBehaviour:
   spawnXRange: 2.04999995
   spawnY: -30
   spawnRate: {x: .25, y: 1.5}
+  minimumDistance: 10
   fromMiddleOffset: 4.80999994
 --- !u!114 &1868516165
 MonoBehaviour:
@@ -1528,6 +1530,22 @@ MonoBehaviour:
   spawnX: -5.32999992
   spawnY: 25
   spawnRate: {x: 1, y: 10}
+--- !u!114 &1868516166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868516161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0670b6a759121b24ea83e8d9cb9e2f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carPrefab: {fileID: 419502, guid: 9e26d4fcfcf031640bebfb6427067be0, type: 2}
+  carPrefab2: {fileID: 419502, guid: 9e26d4fcfcf031640bebfb6427067be0, type: 2}
+  spawnX: -5.32999992
+  spawnY: 10
+  spawnRate: {x: 5, y: 10}
 --- !u!1 &2054054513
 GameObject:
   m_ObjectHideFlags: 0

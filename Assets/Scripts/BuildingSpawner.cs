@@ -19,13 +19,13 @@ public class BuildingSpawner : MonoBehaviour {
 	public float initialSpawnTime = 5.0f;
 	private Cooldown spawnLeftCooldown;
 	private Cooldown spawnRightCooldown;
-	
+
 	public float spawnXRange = 3.25f; // from the center
 	public float spawnY = -20f;
 	
 	public Vector2 spawnRate = new Vector2(.5f, 1f);
 
-	float minimumDistance = 10f;
+	public float minimumDistance = 3f;
 	Transform lastLeftSpawned, lastRightSpawned;
 
 	public float fromMiddleOffset = 4.81f;
@@ -59,7 +59,7 @@ public class BuildingSpawner : MonoBehaviour {
 	}
 
 	bool isTransformDistanceAway(Transform t) {
-		return 3 < Mathf.Abs (t.position.y - spawnY);
+		return minimumDistance < Mathf.Abs (t.position.y - spawnY);
 	}
 	
 	private float spawn (bool isLeft) {
