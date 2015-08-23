@@ -18,9 +18,17 @@ public class Score : MonoBehaviour {
 	}
 
 	public void givePoints (int num) {
-		GameObject.Find ("GameTimer").GetComponent<GameTimer> ().addTime (num);
+		if (num == 5) {
+			addTime(.5f);
+		} else if (num == 1) {
+			addTime(.25f);
+		}
 		total += num * multiplier;
 		redrawText ();
+	}
+
+	void addTime (float num) {
+		GameObject.Find ("GameTimer").GetComponent<GameTimer> ().addTime (num);
 	}
 
 	public int getPoints () {

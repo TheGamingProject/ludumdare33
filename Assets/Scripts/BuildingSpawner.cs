@@ -28,6 +28,8 @@ public class BuildingSpawner : MonoBehaviour {
 	float minimumDistance = 10f;
 	Transform lastLeftSpawned, lastRightSpawned;
 
+	public float fromMiddleOffset = 4.81f;
+
 	void Start () {
 		spawnLeftCooldown = new Cooldown(initialSpawnTime);
 		spawnLeftCooldown.startCooldown();
@@ -43,12 +45,12 @@ public class BuildingSpawner : MonoBehaviour {
 	void Update () {
 		if (spawnLeftCooldown.didCooldownExpire() && (lastLeftSpawned == null || isTransformDistanceAway(lastLeftSpawned))) {
 			float extraSpawnTime = spawn (true);
-			if (lastLeftSpawned != null) 
-				Debug.Log ("spawning left" + Mathf.Abs (lastLeftSpawned.position.y - transform.position.y));
+			//if (lastLeftSpawned != null) 
+			//	Debug.Log ("spawning left" + Mathf.Abs (lastLeftSpawned.position.y - transform.position.y));
 			spawnLeftCooldown.setCooldownAmount (RandomN.getRandomFloatByRange (spawnRate) + extraSpawnTime);
 			spawnLeftCooldown.startCooldown ();
 		}
-		if (spawnRightCooldown.didCooldownExpire()) {
+		if (spawnRightCooldown.didCooldownExpire() && (lastRightSpawned == null || isTransformDistanceAway(lastRightSpawned))) {
 			float extraSpawnTime = spawn (false);
 			//Debug.Log ("spawning right");
 			spawnRightCooldown.setCooldownAmount (RandomN.getRandomFloatByRange (spawnRate) + extraSpawnTime);
@@ -57,11 +59,11 @@ public class BuildingSpawner : MonoBehaviour {
 	}
 
 	bool isTransformDistanceAway(Transform t) {
-		return 10 < Mathf.Abs (t.position.y - transform.position.y);
+		return 3 < Mathf.Abs (t.position.y - spawnY);
 	}
 	
 	private float spawn (bool isLeft) {
-		float x = (isLeft ? -1 : 1) * spawnXRange;
+		float x = (isLeft ? -1 : 1) * spawnXRange - fromMiddleOffset;
 		float yOffset = 0;
 		float extraWaitTime = .0f;
 

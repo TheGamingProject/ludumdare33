@@ -25,13 +25,8 @@ public class GameTimer : MonoBehaviour
 		}
 	}
 
-	public void addTime(int amount) {
-		if (amount == 5) {
-			timeLeft += 1;
-		}
-		if (amount == 1) {
-			timeLeft += .3f;
-		}
+	public void addTime(float amount) {
+		timeLeft += amount;
 	}
 
 	public void setGameOver() {

@@ -51,6 +51,8 @@ public class MultiplierManager : MonoBehaviour
 		
 		disableAll ();
 		startMultiplierSet (2);
+
+		updateMultiplier ();
 	}
 
 	float getTwoDecimalPlaces (float f) {
