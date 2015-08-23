@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class CarSpawner : MonoBehaviour {
 	public Transform carPrefab;
+	public Transform carPrefab2;
 	
 	public float spawnX = -5.33f;
 	public float spawnY = 30.4f;
@@ -26,7 +27,15 @@ public class CarSpawner : MonoBehaviour {
 	}
 
 	void spawn() {
-		Transform t = TransformFactory.make2dTransform(carPrefab, new Vector2(spawnX, spawnY), transform);
+		Transform prefab;
+
+		if (Random.value > .5) {
+			prefab = carPrefab;
+		} else {
+			prefab = carPrefab2;
+		}
+
+		Transform t = TransformFactory.make2dTransform(prefab, new Vector2(spawnX, spawnY), transform);
 	}
 	
 }

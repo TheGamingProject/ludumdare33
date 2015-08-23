@@ -5,6 +5,8 @@ public class Car : MonoBehaviour
 {
 	public float speed = 10f;
 
+	public bool isGreen = false; 
+
 	bool haveCrashed = false;
 	public float crashY = -37;
 
@@ -13,12 +15,14 @@ public class Car : MonoBehaviour
 	void Start ()
 	{
 		levelSpeed = transform.parent.GetComponent<LevelSpeed> ();
-		Debug.Log (levelSpeed);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		if (disappearCooldown.didCooldownExpire ()) {
+			Destroy(gameObject);
+		}
 
 
 		if (!haveCrashed && transform.position.y < crashY) {
@@ -36,12 +40,17 @@ public class Car : MonoBehaviour
 		}
 	}
 
-	float crashTime;
+	Cooldown disappearCooldown = new Cooldown(30);
 	void crash() {
 		Debug.Log ("crash");
-		crashTime = Time.timeSinceLevelLoad;
-		GetComponent<Animator> ().Play ("car_purple_crash");
+		if (isGreen) {
+			GetComponent<Animator> ().Play ("car_green_crash");
+		} else {
+			GetComponent<Animator> ().Play ("car_purple_crash");
+		}
 		haveCrashed = true;
+
+		disappearCooldown.startCooldown ();
 	}
 }
 
