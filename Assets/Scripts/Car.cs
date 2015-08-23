@@ -48,6 +48,7 @@ public class Car : MonoBehaviour
 		} else {
 			GetComponent<Animator> ().Play ("car_purple_crash");
 		}
+		GetComponent<AudioSource> ().Play ();
 		haveCrashed = true;
 
 		disappearCooldown.startCooldown ();

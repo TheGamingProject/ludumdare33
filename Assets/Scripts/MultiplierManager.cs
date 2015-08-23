@@ -13,7 +13,12 @@ public class MultiplierManager : MonoBehaviour
 	public Sprite redIndicatorChecked;
 	public Sprite orangeIndicator;
 	public Sprite orangeIndicatorChecked;
-	
+
+	AudioSource audioSource;
+	public AudioClip combo2Sound;
+	public AudioClip combo3Sound;
+	public AudioClip combo4Sound;
+	public AudioClip combo5Sound;
 	
 	List<Transform> boxes = new List<Transform> ();
 	
@@ -31,6 +36,7 @@ public class MultiplierManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		audioSource = GetComponent<AudioSource> ();
 		x5MultiplierCooldown = new Cooldown (x5MultiplierCooldownAmount);
 
 		boxes.Add(transform.GetChild (0));
@@ -143,6 +149,7 @@ public class MultiplierManager : MonoBehaviour
 			startMultiplierSet (num + 1);
 		}
 
+		playComboSound ();
 
 		onBoxNumber = 0;
 	}
@@ -183,6 +190,31 @@ public class MultiplierManager : MonoBehaviour
 
 	public Colors getColorNeeded() {
 		return colorPicks [onBoxNumber];
+	}
+
+	void playComboSound () {
+		AudioClip audioClip = null;
+		int i = multiplier;
+		i = i > 5 ? 5 : i;
+		i = i < 2 ? 2 : i;
+
+		switch (multiplier) {
+		case 2:
+			audioClip = combo2Sound;
+			break;
+		case 3:
+			audioClip = combo3Sound;
+			break;
+		case 4:
+			audioClip = combo4Sound;
+			break;
+		case 5:
+			audioClip = combo5Sound;
+			break;
+		}
+
+		audioSource.clip = audioClip;
+		audioSource.Play ();
 	}
 }
 

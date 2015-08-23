@@ -42,18 +42,24 @@ public class Tank : MonoBehaviour
 			}
 		}
 	}
-	
+
+	public AudioClip crashSound;
 	Cooldown disappearCooldown = new Cooldown(30);
 	void crash() {
 		GetComponent<Animator> ().Play ("tank_crash");
 
 		haveCrashed = true;
+
+		GetComponent<AudioSource> ().clip = crashSound;
+		GetComponent<AudioSource> ().Play ();
+
 		
 		disappearCooldown.startCooldown ();
 	}
 
 	void shoot() {
 		GetComponent<Animator> ().Play ("tank_shoot");
+		GetComponent<AudioSource> ().Play ();
 		
 		haveShooted = true;
 	}

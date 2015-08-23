@@ -27,5 +27,9 @@ public class Building : MonoBehaviour
 			t2.Rotate (new Vector3 (0, 180, 0));
 		t2.GetComponent<TextMesh> ().text = "+" + deathPoints + "pts";
 		t2.GetComponent<ScrollingCombatText> ().speed = new Vector2 (.2f, -1f);
+
+		AudioSource hitSound = GetComponent<AudioSource> ();
+		if (hitSound != null)
+			hitSound.Play ();
 	}
 }
