@@ -1,15 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class Car : MonoBehaviour
+public class Tank : MonoBehaviour
 {
 	public float speed = 10f;
 
-	public bool isGreen = false; 
-
-	bool haveCrashed = false;
-	public float crashY = -37;
-
+	bool haveCrashed = false, haveShooted;
+	public float shootY = -36;
+	public float crashY = -40;
+	
 	LevelSpeed levelSpeed;
 	// Use this for initialization
 	void Start ()
@@ -24,33 +23,39 @@ public class Car : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-
+		if (!haveShooted && transform.position.y < shootY) {
+			shoot();
+		}
+		
 		if (!haveCrashed && transform.position.y < crashY) {
 			crash ();
 		}
-
+		
 		if (haveCrashed) {
-			float a = transform.position.x <= -6.84f ? 0 : .05f;
+			float a = 0f;
 			Vector3 newPosition = new Vector3 (transform.position.x - (a), transform.position.y - Time.deltaTime * -1 * levelSpeed.baseSpeed, 0);
 			transform.position = newPosition;
 		} else {
 			if (transform.position.y > crashY) {
-				transform.position = new Vector3 (transform.position.x, transform.position.y - Time.deltaTime * speed, 0);
+				float shootMultiplier = haveShooted ? .5f : 1f;
+				transform.position = new Vector3 (transform.position.x, transform.position.y - Time.deltaTime * speed * shootMultiplier, 0);
 			}
 		}
 	}
-
+	
 	Cooldown disappearCooldown = new Cooldown(30);
 	void crash() {
-		//Debug.Log ("crash");
-		if (isGreen) {
-			GetComponent<Animator> ().Play ("car_green_crash");
-		} else {
-			GetComponent<Animator> ().Play ("car_purple_crash");
-		}
-		haveCrashed = true;
+		GetComponent<Animator> ().Play ("tank_crash");
 
+		haveCrashed = true;
+		
 		disappearCooldown.startCooldown ();
+	}
+
+	void shoot() {
+		GetComponent<Animator> ().Play ("tank_shoot");
+		
+		haveShooted = true;
 	}
 }
 

@@ -11,8 +11,6 @@ public class ControlsCatcher : MonoBehaviour
 		if (gameOver)
 			return;
 
-		float direction = 0;
-
 		if (Input.GetKeyDown ("a")) {
 			playerMonster.GetComponent<Controls>().pressLeft();
 		}

@@ -35,7 +35,7 @@ public class CarSpawner : MonoBehaviour {
 			prefab = carPrefab2;
 		}
 
-		Transform t = TransformFactory.make2dTransform(prefab, new Vector2(spawnX, spawnY), transform);
+		TransformFactory.make2dTransform(prefab, new Vector2(spawnX, spawnY), transform);
 	}
 	
 }

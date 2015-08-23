@@ -17,12 +17,8 @@ public class Score : MonoBehaviour {
 	
 	}
 
-	public void givePoints (int num) {
-		if (num == 5) {
-			addTime(.5f);
-		} else if (num == 1) {
-			addTime(.25f);
-		}
+	public void givePoints (int num, float seconds) {
+		addTime (seconds);
 		total += num * multiplier;
 		redrawText ();
 	}
