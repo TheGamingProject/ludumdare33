@@ -94,7 +94,7 @@ public class MultiplierManager : MonoBehaviour
 	}
 	
 	public void hitColoredBuilding (Colors color) {
-		Debug.Log (color + " hit me");
+		//Debug.Log (color + " hit me");
 		if (color == getColorNeeded()) {
 			// check box and move on
 			//   if box is last in combo, move multiplier up and start new combo
@@ -161,7 +161,6 @@ public class MultiplierManager : MonoBehaviour
 	}
 
 	void resetCombo () {
-		x5MultiplierCooldown.stopCooldown();
 		setMultiplierColorIndicatorsToNew (comboSetAmount);
 		onBoxNumber = 0;
 	}

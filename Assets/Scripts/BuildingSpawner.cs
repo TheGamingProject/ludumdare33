@@ -24,7 +24,10 @@ public class BuildingSpawner : MonoBehaviour {
 	public float spawnY = -20f;
 	
 	public Vector2 spawnRate = new Vector2(.5f, 1f);
-	
+
+	float minimumDistance = 10f;
+	Transform lastLeftSpawned, lastRightSpawned;
+
 	void Start () {
 		spawnLeftCooldown = new Cooldown(initialSpawnTime);
 		spawnLeftCooldown.startCooldown();
@@ -38,9 +41,10 @@ public class BuildingSpawner : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (spawnLeftCooldown.didCooldownExpire()) {
+		if (spawnLeftCooldown.didCooldownExpire() && (lastLeftSpawned == null || isTransformDistanceAway(lastLeftSpawned))) {
 			float extraSpawnTime = spawn (true);
-			//.Log ("spawning left");
+			if (lastLeftSpawned != null) 
+				Debug.Log ("spawning left" + Mathf.Abs (lastLeftSpawned.position.y - transform.position.y));
 			spawnLeftCooldown.setCooldownAmount (RandomN.getRandomFloatByRange (spawnRate) + extraSpawnTime);
 			spawnLeftCooldown.startCooldown ();
 		}
@@ -50,6 +54,10 @@ public class BuildingSpawner : MonoBehaviour {
 			spawnRightCooldown.setCooldownAmount (RandomN.getRandomFloatByRange (spawnRate) + extraSpawnTime);
 			spawnRightCooldown.startCooldown ();
 		}
+	}
+
+	bool isTransformDistanceAway(Transform t) {
+		return 10 < Mathf.Abs (t.position.y - transform.position.y);
 	}
 	
 	private float spawn (bool isLeft) {
@@ -97,6 +105,9 @@ public class BuildingSpawner : MonoBehaviour {
 
 		if (!isLeft) {
 			t.Rotate(new Vector3(0,180,0));
+			lastRightSpawned = t;
+		} else {
+			lastLeftSpawned = t;
 		}
 
 		return extraWaitTime;

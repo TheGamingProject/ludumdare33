@@ -377,8 +377,8 @@ MonoBehaviour:
   orangeIndicatorChecked: {fileID: 21300000, guid: 3163e7fc559f42742b80ad10731842a1,
     type: 3}
   x5MultiplierCooldownAmount: 15
-  baseSpeed: -4.5
-  perMultiplierSpeed: -.600000024
+  baseSpeed: -5
+  perMultiplierSpeed: -.400000006
 --- !u!224 &515480365
 RectTransform:
   m_ObjectHideFlags: 0
