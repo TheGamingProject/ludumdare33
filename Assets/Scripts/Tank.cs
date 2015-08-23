@@ -33,12 +33,12 @@ public class Tank : MonoBehaviour
 		
 		if (haveCrashed) {
 			float a = 0f;
-			Vector3 newPosition = new Vector3 (transform.position.x - (a), transform.position.y - Time.deltaTime * -1 * levelSpeed.baseSpeed, 0);
+			Vector3 newPosition = new Vector3 (transform.position.x - (a), transform.position.y - Time.deltaTime * -1 * levelSpeed.baseSpeed, transform.position.z);
 			transform.position = newPosition;
 		} else {
 			if (transform.position.y > crashY) {
 				float shootMultiplier = haveShooted ? .5f : 1f;
-				transform.position = new Vector3 (transform.position.x, transform.position.y - Time.deltaTime * speed * shootMultiplier, 0);
+				transform.position = new Vector3 (transform.position.x, transform.position.y - Time.deltaTime * speed * shootMultiplier, transform.position.z);
 			}
 		}
 	}
