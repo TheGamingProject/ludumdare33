@@ -18,6 +18,7 @@ public class Score : MonoBehaviour {
 	}
 
 	public void givePoints (int num) {
+		GameObject.Find ("GameTimer").GetComponent<GameTimer> ().addTime (num);
 		total += num * multiplier;
 		redrawText ();
 	}

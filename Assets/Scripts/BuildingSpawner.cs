@@ -2,10 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class BuildingSpawner : MonoBehaviour {
-	public Transform spawneePrefab1;
-	public Transform spawneePrefab2;
-	public Transform spawneePrefab3;
-	public Transform spawneePrefab4;
+	public Transform bluePrefab;
+	public Transform greenPrefab;
+	public Transform redPrefab;
+	public Transform orangePrefab;
+	Dictionary<Colors,Transform> colorPrefabs = new Dictionary<Colors,Transform>();
+
 	public Transform safeGroup1Prefab;
 	public Transform safeGroup2Prefab;
 
@@ -28,6 +30,11 @@ public class BuildingSpawner : MonoBehaviour {
 		spawnLeftCooldown.startCooldown();
 		spawnRightCooldown = new Cooldown(initialSpawnTime);
 		spawnRightCooldown.startCooldown();
+
+		colorPrefabs.Add (Colors.Blue, bluePrefab);
+		colorPrefabs.Add (Colors.Green, greenPrefab);
+		colorPrefabs.Add (Colors.Red, redPrefab);
+		colorPrefabs.Add (Colors.Orange, orangePrefab);
 	}
 	
 	void Update () {
@@ -51,31 +58,37 @@ public class BuildingSpawner : MonoBehaviour {
 		float extraWaitTime = .0f;
 
 		Transform buildingPrefab = null;
-		int whichBuilding = Random.Range (0, 6);
+		int whichBuilding = Random.Range (0, 9);
 		switch (whichBuilding) {
 		case 0:
-			buildingPrefab = spawneePrefab1;
+				buildingPrefab = bluePrefab;
 			break;
 		case 1:
-			buildingPrefab = spawneePrefab2;
+			buildingPrefab = greenPrefab;
 			break;
 		case 2:
-			buildingPrefab = spawneePrefab3;
+			buildingPrefab = redPrefab;
 			break;
 		case 3:
-			buildingPrefab = spawneePrefab4;
+			buildingPrefab = orangePrefab;
 			break;
 		case 4:
+		case 5:
 			buildingPrefab = safeGroup1Prefab;
 			x += (isLeft ? -1 : 1) * group1XOffset;
 			yOffset = 1;
 			extraWaitTime = .5f;
 			break;
-		case 5:
+		case 6:
+		case 7:
 			buildingPrefab = safeGroup2Prefab;
 			x += (isLeft ? -1 : 1) * group2XOffset;
 			yOffset = 1;
 			extraWaitTime = .5f;
+			break;
+		case 8:
+			Colors currentColor = GameObject.Find("MultiplierManager").GetComponent<MultiplierManager>().getColorNeeded();
+			buildingPrefab = colorPrefabs[currentColor];
 			break;
 		}
 

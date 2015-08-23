@@ -5,10 +5,12 @@ using Random = UnityEngine.Random;
 public class ControlsCatcher : MonoBehaviour
 {
 	public Transform playerMonster;
-
-	float lastDirection = 0;
+	bool gameOver = false;
 
 	void Update () {
+		if (gameOver)
+			return;
+
 		float direction = 0;
 
 		if (Input.GetKeyDown ("a")) {
@@ -24,8 +26,6 @@ public class ControlsCatcher : MonoBehaviour
 		if (Input.GetKeyUp ("d")) {
 			playerMonster.GetComponent<Controls>().releaseRight();
 		}
-
-		lastDirection = direction;
 	}
 	
 	void OnGUI () {
@@ -69,6 +69,10 @@ public class ControlsCatcher : MonoBehaviour
 			playerMonster.GetComponent<Controls>().release();
 		}
 		*/
+	}
+
+	public void setGameOver () {
+		gameOver = true;
 	}
 	
 }
