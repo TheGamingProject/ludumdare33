@@ -29,11 +29,14 @@ public class MultiplierManager : MonoBehaviour
 
 	public float x5MultiplierCooldownAmount = 10f;
 
+	public float comboCompleteCooldownAmount = 5f;
+
 	// Use this for initialization
 	void Start ()
 	{
 		audioSource = GetComponent<AudioSource> ();
 		x5MultiplierCooldown = new Cooldown (x5MultiplierCooldownAmount);
+		comboCompleteCooldown = new Cooldown (comboCompleteCooldownAmount);
 
 		boxes.Add(transform.GetChild (0));
 		boxes.Add(transform.GetChild (1));
@@ -66,10 +69,21 @@ public class MultiplierManager : MonoBehaviour
 	void Update ()
 	{
 		float x5TimeLeft = getTwoDecimalPlaces(this.getX5MultiplierTime ());
-		GameObject.Find ("x5Multiplier").GetComponent<Text> ().text = x5TimeLeft == -1 ? "" : "" + x5TimeLeft;
+
+		if (x5TimeLeft == -1) {
+			GameObject.Find("ComboGlow").GetComponent<Image>().enabled = false;
+			GameObject.Find ("x5Multiplier").GetComponent<Text> ().text = "";
+		} else {
+			GameObject.Find("ComboGlow").GetComponent<Image>().enabled = true;
+			GameObject.Find ("x5Multiplier").GetComponent<Text> ().text = "" + x5TimeLeft;
+		}
 
 		if (x5MultiplierCooldown.didCooldownExpire ()) {
 			deMultiply();
+		}
+
+		if (comboCompleteCooldown.didCooldownExpire ()) {
+			turnOffComboComplete();
 		}
 	}
 	
@@ -222,6 +236,18 @@ public class MultiplierManager : MonoBehaviour
 
 		audioSource.clip = audioClip;
 		audioSource.Play ();
+		turnOnComboComplete ();
+	}
+
+	Cooldown comboCompleteCooldown;
+	void turnOnComboComplete () {
+		GameObject.Find ("ComboComplete").GetComponent<SpriteRenderer> ().enabled = true;
+		comboCompleteCooldown.startCooldown ();
+	}
+
+	void turnOffComboComplete () {
+		GameObject.Find ("ComboComplete").GetComponent<SpriteRenderer> ().enabled = false;
+		comboCompleteCooldown.stopCooldown ();
 	}
 }
 
