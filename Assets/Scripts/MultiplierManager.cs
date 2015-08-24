@@ -6,13 +6,9 @@ using System.Collections.Generic;
 public class MultiplierManager : MonoBehaviour
 {
 	public Sprite blueIndicator;
-	public Sprite blueIndicatorChecked;
 	public Sprite greenIndicator;
-	public Sprite greenIndicatorChecked;
 	public Sprite redIndicator;
-	public Sprite redIndicatorChecked;
 	public Sprite orangeIndicator;
-	public Sprite orangeIndicatorChecked;
 
 	AudioSource audioSource;
 	public AudioClip combo2Sound;
@@ -21,9 +17,9 @@ public class MultiplierManager : MonoBehaviour
 	public AudioClip combo5Sound;
 	
 	List<Transform> boxes = new List<Transform> ();
+	List<Transform> stars = new List<Transform> ();
 	
 	Dictionary<Colors, Sprite> colorIndicators = new Dictionary<Colors, Sprite>();
-	Dictionary<Colors, Sprite> colorIndicatorsChecked = new Dictionary<Colors, Sprite>();
 	
 	List<Colors> colorPicks;
 	int comboSetAmount = 2;
@@ -41,19 +37,20 @@ public class MultiplierManager : MonoBehaviour
 
 		boxes.Add(transform.GetChild (0));
 		boxes.Add(transform.GetChild (1));
-		boxes.Add( transform.GetChild (2));
+		boxes.Add(transform.GetChild (2));
 		boxes.Add(transform.GetChild (3));
 		boxes.Add(transform.GetChild (4));
-		
-		
+
+		stars.Add (transform.GetChild (5));
+		stars.Add (transform.GetChild (6));
+		stars.Add (transform.GetChild (7));
+		stars.Add (transform.GetChild (8));
+		stars.Add (transform.GetChild (9));
+
 		colorIndicators.Add (Colors.Blue, blueIndicator);
 		colorIndicators.Add (Colors.Green, greenIndicator);
 		colorIndicators.Add (Colors.Orange, orangeIndicator);
 		colorIndicators.Add (Colors.Red, redIndicator);
-		colorIndicatorsChecked.Add (Colors.Blue, blueIndicatorChecked);
-		colorIndicatorsChecked.Add (Colors.Green, greenIndicatorChecked);
-		colorIndicatorsChecked.Add (Colors.Orange, orangeIndicatorChecked);
-		colorIndicatorsChecked.Add (Colors.Red, redIndicatorChecked);
 		
 		disableAll ();
 		startMultiplierSet (2);
@@ -107,7 +104,7 @@ public class MultiplierManager : MonoBehaviour
 			// check box and move on
 			//   if box is last in combo, move multiplier up and start new combo
 
-			boxes[onBoxNumber].GetComponent<Image>().sprite = colorIndicatorsChecked[colorPicks[onBoxNumber]];
+			stars[onBoxNumber].GetComponent<Image>().enabled = true;
 			onBoxNumber++;
 
 			if (onBoxNumber == comboSetAmount) {
@@ -132,6 +129,15 @@ public class MultiplierManager : MonoBehaviour
 		boxes[2].GetComponent<Image> ().enabled = false;
 		boxes[3].GetComponent<Image> ().enabled = false;
 		boxes[4].GetComponent<Image> ().enabled = false;
+		disableStars ();
+	}
+
+	void disableStars () {
+		stars[0].GetComponent<Image>().enabled = false;
+		stars[1].GetComponent<Image>().enabled = false;
+		stars[2].GetComponent<Image>().enabled = false;
+		stars[3].GetComponent<Image>().enabled = false;
+		stars[4].GetComponent<Image>().enabled = false;
 	}
 
 	void comboCompleted (int num) {
@@ -171,6 +177,7 @@ public class MultiplierManager : MonoBehaviour
 
 	void resetCombo () {
 		setMultiplierColorIndicatorsToNew (comboSetAmount);
+		disableStars ();
 		onBoxNumber = 0;
 	}
 

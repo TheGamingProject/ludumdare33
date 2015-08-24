@@ -10,6 +10,8 @@ public class BuildingSpawner : MonoBehaviour {
 
 	public Transform safeGroup1Prefab;
 	public Transform safeGroup2Prefab;
+	public Transform safeGroup3Prefab;
+	public Transform safeGroup4Prefab;
 
 	public float group1XOffset = 2f;
 	public float group2XOffset = 2f;
@@ -83,6 +85,11 @@ public class BuildingSpawner : MonoBehaviour {
 			buildingPrefab = orangePrefab;
 			break;
 		case 4:
+			buildingPrefab = safeGroup3Prefab;
+			x += (isLeft ? -1 : 1) * group1XOffset;
+			yOffset = 1;
+			extraWaitTime = .5f;
+			break;
 		case 5:
 			buildingPrefab = safeGroup1Prefab;
 			x += (isLeft ? -1 : 1) * group1XOffset;
@@ -90,6 +97,11 @@ public class BuildingSpawner : MonoBehaviour {
 			extraWaitTime = .5f;
 			break;
 		case 6:
+			buildingPrefab = safeGroup4Prefab;
+			x += (isLeft ? -1 : 1) * group2XOffset;
+			yOffset = 1;
+			extraWaitTime = .5f;
+			break;
 		case 7:
 			buildingPrefab = safeGroup2Prefab;
 			x += (isLeft ? -1 : 1) * group2XOffset;
