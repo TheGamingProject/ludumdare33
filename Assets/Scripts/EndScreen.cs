@@ -27,7 +27,7 @@ public class EndScreen : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown ("z")) {
+		if (Input.GetKeyDown ("z") || Input.GetKeyDown("enter")) {
 			Application.LoadLevel("start");
 		}
 	}

@@ -11,17 +11,17 @@ public class ControlsCatcher : MonoBehaviour
 		if (gameOver)
 			return;
 
-		if (Input.GetKeyDown ("a")) {
+		if (Input.GetKeyDown ("a") || Input.GetKeyDown ("left")) {
 			playerMonster.GetComponent<Controls>().pressLeft();
 		}
-		if (Input.GetKeyUp ("a")) {
+		if (Input.GetKeyUp ("a") || Input.GetKeyUp("left")) {
 			playerMonster.GetComponent<Controls>().releaseLeft();
 		}
 
-		if (Input.GetKeyDown ("d")) {
+		if (Input.GetKeyDown ("d") || Input.GetKeyDown("right")) {
 			playerMonster.GetComponent<Controls>().pressRight();
 		}
-		if (Input.GetKeyUp ("d")) {
+		if (Input.GetKeyUp ("d") || Input.GetKeyUp("right")) {
 			playerMonster.GetComponent<Controls>().releaseRight();
 		}
 	}
