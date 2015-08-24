@@ -39,4 +39,8 @@ public class Score : MonoBehaviour {
 	void redrawText () {
 		GetComponent<Text> ().text = total + "  " + multiplier + "x";
 	}
+
+	public int getScore() {
+		return total;
+	}
 }

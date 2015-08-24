@@ -11,6 +11,7 @@ public class Building : MonoBehaviour
 
 	public void die () {
 		GetComponent<Animator> ().SetBool ("isDead", true);
+		GetComponent<BoxCollider2D> ().enabled = false;
 		GameObject.Find ("Score").GetComponent<Score> ().givePoints (deathPoints, deathSeconds);
 
 		int isLeft = transform.rotation.y == 1 ? 1 : -1;
