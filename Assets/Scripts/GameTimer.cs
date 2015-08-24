@@ -65,6 +65,7 @@ public class GameTimer : MonoBehaviour
 		GameObject.Find ("EndScreenMessage").GetComponent<SpriteRenderer> ().enabled = true;
 		startEndScreenCooldown1.startCooldown ();
 		startEndScreenCooldown2.startCooldown ();
+		GetComponent<AudioSource> ().Play ();
 	}
 
 }
