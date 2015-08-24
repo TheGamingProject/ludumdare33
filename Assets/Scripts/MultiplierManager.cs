@@ -157,6 +157,7 @@ public class MultiplierManager : MonoBehaviour
 	void comboCompleted (int num) {
 		GameObject.Find ("GameTimer").GetComponent<GameTimer> ().addTime (multiplier);
 
+		totalCombos++;
 		multiplier += 1;
 		updateMultiplier ();
 		
@@ -248,6 +249,11 @@ public class MultiplierManager : MonoBehaviour
 	void turnOffComboComplete () {
 		GameObject.Find ("ComboComplete").GetComponent<SpriteRenderer> ().enabled = false;
 		comboCompleteCooldown.stopCooldown ();
+	}
+
+	int totalCombos = 0;
+	public int getTotalCombos () {
+		return totalCombos;
 	}
 }
 
