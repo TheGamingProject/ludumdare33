@@ -36,6 +36,25 @@ public class ColoredBuilding : Building
 		Transform t2 = TransformFactory.make2dTransform(prefab, new Vector2(spawnX2, spawnY2), transform);
 		t2.position = new Vector3 (t2.position.x, t2.position.y, t2.position.z - .1f);
 		t2.Rotate (new Vector3 (0, 180, 180));
+
+
+		// up sass count for end screen
+		ScorePasser sp = GameObject.Find ("ScorePasser").GetComponent<ScorePasser>();
+
+		switch (color) {
+		case Colors.Blue:
+				sp.upOneBlue();
+			break;
+		case Colors.Red:
+			sp.upOneRed();
+			break;
+		case Colors.Orange:
+			sp.upOneOrange();
+			break;
+		case Colors.Green:
+			sp.upOneGreen();
+			break;
+		}
 	}
 }
 

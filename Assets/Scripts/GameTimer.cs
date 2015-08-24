@@ -43,8 +43,9 @@ public class GameTimer : MonoBehaviour
 		
 		if (startEndScreenCooldown2.didCooldownExpire ()) {
 			int totalScore = GameObject.Find("Score").GetComponent<Score>().getScore();
+			int totalCombos = GameObject.Find ("MultiplierManager").GetComponent<MultiplierManager>().getTotalCombos();
 			
-			GameObject.Find("ScorePasser").GetComponent<ScorePasser>().setScores(totalScore);
+			GameObject.Find("ScorePasser").GetComponent<ScorePasser>().setScores(totalScore, totalCombos);
 			Application.LoadLevel("end");
 		}
 	}
