@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathPoints: 1
-  deathSeconds: .25
+  deathSeconds: .200000003
   popupTextPrefab: {fileID: 487732, guid: 1dcd726deefa4cd4d8b1c5fb66818f43, type: 2}
 --- !u!114 &11441142
 MonoBehaviour:
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathPoints: 1
-  deathSeconds: .25
+  deathSeconds: .200000003
   popupTextPrefab: {fileID: 487732, guid: 1dcd726deefa4cd4d8b1c5fb66818f43, type: 2}
 --- !u!114 &11475864
 MonoBehaviour:
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathPoints: 1
-  deathSeconds: .25
+  deathSeconds: .200000003
   popupTextPrefab: {fileID: 487732, guid: 1dcd726deefa4cd4d8b1c5fb66818f43, type: 2}
 --- !u!212 &21212564
 SpriteRenderer:
@@ -451,7 +451,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: deathSeconds
-      value: .25
+      value: .200000003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

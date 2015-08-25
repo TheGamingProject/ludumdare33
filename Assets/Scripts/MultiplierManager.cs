@@ -164,7 +164,7 @@ public class MultiplierManager : MonoBehaviour
 		disableAll ();
 	
 		if (multiplier >= 5) {
-			x5MultiplierCooldown.startCooldown ();
+			startX5MultiplierCooldown ();
 			startMultiplierSet (5);
 		} else {
 			startMultiplierSet (num + 1);
@@ -186,8 +186,16 @@ public class MultiplierManager : MonoBehaviour
 		startMultiplierSet (multiplier + 1);
 
 		if (multiplier > 5) {
-			x5MultiplierCooldown.startCooldown();
+			startX5MultiplierCooldown();
 		}
+	}
+
+	void startX5MultiplierCooldown () {
+		float extraMinusBasedOnHighMultiplier = multiplier >= 8 ? multiplier-7 : 0;
+		float comboAllowedTime = x5MultiplierCooldownAmount - extraMinusBasedOnHighMultiplier;
+
+		x5MultiplierCooldown.setCooldownAmount (comboAllowedTime);
+		x5MultiplierCooldown.startCooldown();
 	}
 
 	void resetCombo () {
