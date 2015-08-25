@@ -6,6 +6,7 @@ public class ControlsCatcher : MonoBehaviour
 {
 	public Transform playerMonster;
 	bool gameOver = false;
+	bool isMuted = false;
 
 	void Update () {
 		if (gameOver)
@@ -23,6 +24,14 @@ public class ControlsCatcher : MonoBehaviour
 		}
 		if (Input.GetKeyUp ("d") || Input.GetKeyUp("right")) {
 			playerMonster.GetComponent<Controls>().releaseRight();
+		}
+
+		if (Input.GetKeyUp ("m")) {
+			if (isMuted) {
+				AudioListener.volume = 1;
+			} else {
+				AudioListener.volume = 0;
+			}
 		}
 	}
 	
